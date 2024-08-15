@@ -13,7 +13,14 @@
   "editor.quickSuggestions": {
     "strings": "on"
   },
-  "cSpell.words": ["clsx", "nextjs", "tailwindcss"],
+  "cSpell.words": [
+    "clsx",
+    "hookform",
+    "lucide",
+    "neondatabase",
+    "nextjs",
+    "tailwindcss"
+  ],
   "tailwindCSS.experimental.classRegex": [
     ["ctl\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
   ]
