@@ -1,13 +1,22 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
+import { redirect } from 'next/navigation';
+
+import SettingsPage from './SettingsPage';
+import { auth } from '@/auth';
 
 export const metadata: Metadata = {
   title: 'Settings',
 };
 
-import SettingsPage from './SettingsPage';
+const Page = async () => {
+  const session = await auth();
+  const user = session?.user;
 
-const Page = () => {
-  return <SettingsPage />;
+  if (!user) {
+    redirect('/api/auth/signin?callbackUrl=/settings');
+  }
+
+  return <SettingsPage user={user} />;
 };
 
 export default Page;

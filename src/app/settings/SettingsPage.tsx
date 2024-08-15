@@ -1,6 +1,7 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { User } from 'next-auth';
 import { useForm } from 'react-hook-form';
 
 import { updateProfile } from './actions';
@@ -18,11 +19,15 @@ import { Input } from '@/components/ui/input';
 import { useToast } from '@/components/ui/use-toast';
 import { UpdateProfileValues, updateProfileSchema } from '@/lib/validation';
 
-const SettingsPage = () => {
+type SettingsPageProps = {
+  user: User;
+};
+
+const SettingsPage = ({ user }: SettingsPageProps) => {
   const { toast } = useToast();
   const form = useForm<UpdateProfileValues>({
     resolver: zodResolver(updateProfileSchema),
-    defaultValues: { name: '' },
+    defaultValues: { name: user.name || '' },
   });
 
   const onSubmit = async (data: UpdateProfileValues) => {
