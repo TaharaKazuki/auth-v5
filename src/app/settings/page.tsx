@@ -14,6 +14,7 @@ const Page = async () => {
 
   if (!user) {
     redirect('/api/auth/signin?callbackUrl=/settings');
+    return null;
   }
 
   return <SettingsPage user={user} />;
