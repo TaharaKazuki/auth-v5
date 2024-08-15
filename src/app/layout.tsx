@@ -1,7 +1,8 @@
+import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import { SessionProvider } from 'next-auth/react';
 
-import './globals.css';
 import Navbar from '@/components/Navbar';
 import { Toaster } from '@/components/ui/toaster';
 
@@ -24,9 +25,11 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body className={inter.className}>
-        <Navbar />
-        {children}
-        <Toaster />
+        <SessionProvider>
+          <Navbar />
+          {children}
+          <Toaster />
+        </SessionProvider>
       </body>
     </html>
   );

@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 
 import SettingsPage from './SettingsPage';
-import { auth } from '@/auth';
 import getSession from '@/lib/getSession';
 
 export const metadata: Metadata = {

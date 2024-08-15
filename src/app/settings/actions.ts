@@ -1,10 +1,11 @@
 'use server';
 
-import { auth } from '@/auth';
+import { revalidatePath } from 'next/cache';
+
 import getSession from '@/lib/getSession';
 import prisma from '@/lib/prisma';
 import { UpdateProfileValues, updateProfileSchema } from '@/lib/validation';
-import { revalidatePath } from 'next/cache';
+
 
 export const updateProfile = async (values: UpdateProfileValues) => {
   const session = await getSession();
