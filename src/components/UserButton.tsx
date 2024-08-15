@@ -1,3 +1,9 @@
+import { LogOut, Settings } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { User } from 'next-auth';
+
+import { Button } from './ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -6,20 +12,14 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@radix-ui/react-dropdown-menu';
-import { LogOut, Settings } from 'lucide-react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { User } from 'next-auth';
-
-import { Button } from './ui/button';
+} from './ui/dropdown-menu';
 import avatarPlaceholder from '@/assets/images/avatar_placeholder.png';
 
-type UserButtonProps = {
+interface UserButtonProps {
   user: User;
-};
+}
 
-const UserButton = ({ user }: UserButtonProps) => {
+export default function UserButton({ user }: UserButtonProps) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -43,9 +43,17 @@ const UserButton = ({ user }: UserButtonProps) => {
               <span>Settings</span>
             </Link>
           </DropdownMenuItem>
+          {/* TODO: Show this only for admins */}
+          {/* <DropdownMenuItem asChild>
+                <Link href="/admin">
+                  <Lock className="mr-2 h-4 w-4" />
+                  Admin
+                </Link>
+              </DropdownMenuItem> */}
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
+          {/* TODO: Add a logout functionality */}
           <button className="flex w-full items-center">
             <LogOut className="mr-2 size-4" /> Sign Out
           </button>
@@ -53,6 +61,4 @@ const UserButton = ({ user }: UserButtonProps) => {
       </DropdownMenuContent>
     </DropdownMenu>
   );
-};
-
-export default UserButton;
+}
