@@ -3,9 +3,10 @@ import Link from 'next/link';
 import { Button } from './ui/button';
 import UserButton from './UserButton';
 import { auth, signIn } from '@/auth';
+import getSession from '@/lib/getSession';
 
 const Navbar = async () => {
-  const session = await auth();
+  const session = await getSession();
   const user = session?.user;
 
   return (

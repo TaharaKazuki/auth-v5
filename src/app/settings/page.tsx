@@ -3,13 +3,14 @@ import { redirect } from 'next/navigation';
 
 import SettingsPage from './SettingsPage';
 import { auth } from '@/auth';
+import getSession from '@/lib/getSession';
 
 export const metadata: Metadata = {
   title: 'Settings',
 };
 
 const Page = async () => {
-  const session = await auth();
+  const session = await getSession();
   const user = session?.user;
 
   if (!user) {
