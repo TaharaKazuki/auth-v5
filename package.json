@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
+    "postinstall": "prisma generate",
     "db:push": "npx prisma db push",
     "migrate": "npx prisma migrate dev"
   },
